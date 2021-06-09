@@ -3,7 +3,7 @@ name: Continuos Deployment workflow
 on:
   push:
     branches:
-      -master
+      - master
 jobs:
   cd:
     runs-on: ubuntu-latest
