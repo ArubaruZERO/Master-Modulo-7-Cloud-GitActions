@@ -13,7 +13,7 @@ jobs:
       - name: Use SSH key
         run : |
           mkdir -p ~/.shh/
-          echo "${{secrets.SSH_PRIVATE_KEY}}" > ~/.ssh/
+          echo "${{secrets.SSH_PRIVATE_KEY}}" > ~/.ssh/id_rsa
           sudo chmod 600 ~/.shh/id_rsa
       - name: Git config
         run : |
