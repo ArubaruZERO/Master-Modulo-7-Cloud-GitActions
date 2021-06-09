@@ -10,10 +10,19 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
+      - name: Use SSH key
+        run : |
+          mkdir -p ~/.shh/
+          echo "${{secrets.SSH_PRIVATE_KEY}}" > ~/.ssh/
+          sudo chmod 600 ~/.shh/id_rsa
+      - name: Git config
+        run : |
+          git config --global user.email "cd-user@my-app.com"
+          git config --global user.name "cd-user"
       - name: Install
         run : npm install
       - name: Build
         run: npm run build
       - name: Deploy
-        run : npm run deploy
+        run : npm run deploy -- -r git@github.com:ArubaruZERO/Master-Modulo-7-Cloud-GitActions.git
 
