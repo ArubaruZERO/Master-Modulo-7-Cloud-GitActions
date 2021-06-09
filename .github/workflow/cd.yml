@@ -1,0 +1,19 @@
+name: Continuos Deployment workflow
+
+on:
+  push:
+    branches:
+      -master
+jobs:
+  cd:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Install
+        run : npm Install
+      - name: Build
+        run: npm run Build
+      - name: Deploy
+        run : npm run deploy
+
